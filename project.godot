@@ -60,3 +60,4 @@ action_run={
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
+jolt_3d/solver/position_iterations=4
