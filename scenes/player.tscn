@@ -8,6 +8,7 @@
 radius = 0.55
 
 [node name="Player" type="CharacterBody3D"]
+platform_wall_layers = 4294967295
 script = ExtResource("1_7q65x")
 
 [node name="Ears" type="AudioListener3D" parent="."]
