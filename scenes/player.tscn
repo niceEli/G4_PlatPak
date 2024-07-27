@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://1wjynvlvhbep"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_7q65x"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i8820"]
+radius = 0.55
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_7q65x")
+
+[node name="Ears" type="AudioListener3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51065, 0)
+current = true
+
+[node name="Eyes" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51065, 0)
+fov = 100.0
+
+[node name="HoldPoint" type="Marker3D" parent="Eyes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62269e-08, 0, -2.54353)
+
+[node name="HoldCheck" type="RayCast3D" parent="Eyes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+target_position = Vector3(0, 0, -1.5)
+hit_from_inside = true
+debug_shape_thickness = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_i8820")

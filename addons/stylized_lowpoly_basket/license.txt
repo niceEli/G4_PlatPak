@@ -1,0 +1,11 @@
+Model Information:
+* title:	Stylized lowpoly basket
+* source:	https://sketchfab.com/3d-models/stylized-lowpoly-basket-8eb24799537a4480946be2b2bd0616d2
+* author:	Mua (https://sketchfab.com/mualab)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Stylized lowpoly basket" (https://sketchfab.com/3d-models/stylized-lowpoly-basket-8eb24799537a4480946be2b2bd0616d2) by Mua (https://sketchfab.com/mualab) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhoihtf38j3st"]
+
+[ext_resource type="Environment" uid="uid://rih3i7f4ymxu" path="res://env/world_env.res" id="1_o0y4j"]
+[ext_resource type="CameraAttributesPhysical" uid="uid://3xi36vtfagwx" path="res://env/cam_attrib.res" id="2_ydpak"]
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = ExtResource("1_o0y4j")
+camera_attributes = ExtResource("2_ydpak")
