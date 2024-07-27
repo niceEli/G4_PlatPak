@@ -2,6 +2,10 @@ extends Node3D
 
 @onready var hold_point = $HoldPoint
 @onready var hold_check = $HoldCheck
+var player
+
+func _ready():
+	player = get_parent().get_parent()
 
 var held_obj: RigidBody3D;
 
@@ -36,7 +40,7 @@ func _physics_process(delta):
 			held_obj = hold_check.get_collider()
 
 	if held_obj:
-		held_obj.linear_velocity = (hold_point.global_position - held_obj.global_position) * 10
+		held_obj.linear_velocity = ((hold_point.global_position - held_obj.global_position) * 10) + player.velocity
 		
 		held_obj.angular_velocity = calc_angular_velocity(held_obj.global_basis, hold_point.global_basis) * 10
 		

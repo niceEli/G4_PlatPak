@@ -221,7 +221,7 @@ environment = ExtResource("8_gayph")
 camera_attributes = ExtResource("9_3qb0x")
 
 [node name="Player" parent="." instance=ExtResource("2_cbjw4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.01078)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02373, 0, 3.01078)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 deterministic = true
