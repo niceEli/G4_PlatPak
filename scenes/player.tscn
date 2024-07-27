@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://1wjynvlvhbep"]
+[gd_scene load_steps=4 format=3 uid="uid://1wjynvlvhbep"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7q65x"]
+[ext_resource type="Script" path="res://scripts/HoldSys.gd" id="2_dau3m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i8820"]
 radius = 0.55
@@ -16,10 +17,13 @@ current = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.51065, 0)
 fov = 100.0
 
-[node name="HoldPoint" type="Marker3D" parent="Eyes"]
+[node name="HoldSys" type="Node3D" parent="Eyes"]
+script = ExtResource("2_dau3m")
+
+[node name="HoldPoint" type="Marker3D" parent="Eyes/HoldSys"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62269e-08, 0, -2.54353)
 
-[node name="HoldCheck" type="RayCast3D" parent="Eyes"]
+[node name="HoldCheck" type="RayCast3D" parent="Eyes/HoldSys"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 target_position = Vector3(0, 0, -1.5)
 hit_from_inside = true
