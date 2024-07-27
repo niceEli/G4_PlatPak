@@ -17,7 +17,7 @@ extends CharacterBody3D
 ## Max velocity in the air
 @export var max_air_velocity : float = 1.5
 ## Jump force multiplier
-@export var jump_force : float = 0.8
+@export var jump_force : float = 0.6
 ## Easy BHopping Mode
 @export var jump_when_held : bool = true
 ## Friction
