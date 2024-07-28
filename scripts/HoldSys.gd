@@ -34,7 +34,7 @@ func calc_angular_velocity(from_basis: Basis, to_basis: Basis) -> Vector3:
 
 	return axis * angle
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Input.is_action_just_pressed("action_pickup"):
 		if hold_check.get_collider() and hold_check.get_collider() is RigidBody3D and hold_check.get_collider().mass <= 50:
 			held_obj = hold_check.get_collider()

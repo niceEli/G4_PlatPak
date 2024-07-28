@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://coh2buj0gmb04"]
+[gd_scene load_steps=33 format=3 uid="uid://coh2buj0gmb04"]
 
 [ext_resource type="Texture2D" uid="uid://dwixm12u67jbj" path="res://addons/godot-prototype-texture/Vector/checker_cyan_512x512.svg" id="1_13j4x"]
 [ext_resource type="PackedScene" uid="uid://1wjynvlvhbep" path="res://scenes/player.tscn" id="2_cbjw4"]
 [ext_resource type="Texture2D" uid="uid://dhdni050f73m6" path="res://addons/godot-prototype-texture/Vector/checker_black_512x512.svg" id="2_kt4s7"]
 [ext_resource type="Texture2D" uid="uid://easfo7yhrnxp" path="res://addons/godot-prototype-texture/Vector/checker_blue_512x512.svg" id="3_cl20p"]
+[ext_resource type="Texture2D" uid="uid://dmm3ww5wg18q8" path="res://addons/godot-prototype-texture/Vector/checker_pink_512x512.svg" id="4_h0wgb"]
 [ext_resource type="Texture2D" uid="uid://xi4drdg6137" path="res://addons/godot-prototype-texture/Vector/checker_orange_512x512.svg" id="4_rgfds"]
 [ext_resource type="Texture2D" uid="uid://b6e8o3m4vt4h" path="res://addons/godot-prototype-texture/Vector/checker_white_512x512.svg" id="5_8131b"]
 [ext_resource type="Texture2D" uid="uid://d25bvqgowqffc" path="res://addons/godot-prototype-texture/Vector/checker_yellow_512x512.svg" id="6_d7tay"]
@@ -37,8 +38,11 @@ refraction_scale = 0.18
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wovio"]
 albedo_texture = ExtResource("3_cl20p")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ibu5"]
-albedo_texture = ExtResource("3_cl20p")
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kmxd1"]
+friction = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njh01"]
+albedo_texture = ExtResource("4_h0wgb")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xqg3"]
 albedo_texture = ExtResource("4_rgfds")
@@ -50,6 +54,9 @@ size = Vector3(1, 0.0750733, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78oi4"]
 albedo_texture = ExtResource("5_8131b")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_sq1n8"]
+bounce = 0.77
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xcu38"]
 
@@ -128,13 +135,14 @@ material = SubResource("StandardMaterial3D_vppk0")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92128, -0.272526, -1.23887)
+physics_material_override = SubResource("PhysicsMaterial_kmxd1")
 freeze_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/RigidBody3D"]
 shape = SubResource("BoxShape3D_84pr8")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Level/RigidBody3D"]
-material_override = SubResource("StandardMaterial3D_1ibu5")
+material_override = SubResource("StandardMaterial3D_njh01")
 material = SubResource("StandardMaterial3D_vppk0")
 
 [node name="RigidBody3D4" type="RigidBody3D" parent="Level"]
@@ -200,9 +208,12 @@ size = Vector3(3.84845, 1.40115, 3.74274)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0491, 0)
 operation = 2
 radius = 1.48672
+radial_segments = 32
+rings = 32
 
 [node name="RigidBody3D6" type="RigidBody3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38217, 1.7727, -3.46713)
+physics_material_override = SubResource("PhysicsMaterial_sq1n8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Level/RigidBody3D6"]
 shape = SubResource("SphereShape3D_xcu38")
@@ -214,6 +225,8 @@ rings = 19
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.663238, -0.313606, -0.679534, 0.305851, -0.715114, 0.628543, -0.683059, -0.62471, -0.378374, 0, 0, 0)
+shadow_enabled = true
+shadow_blur = 1.606
 script = ExtResource("7_n131w")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

@@ -99,17 +99,17 @@ func get_next_velocity(previousVelocity, delta):
 	var accel = ground_accelerate if grounded else air_accelerate
 	
 	# Calculate velocity for next frame
-	var velocity = accelerate(get_wishdir(), previousVelocity, accel, max_vel, delta)
+	var vel = accelerate(get_wishdir(), previousVelocity, accel, max_vel, delta)
 	# Apply gravity
-	velocity += Vector3.DOWN * get_gravity(delta)
+	vel += Vector3.DOWN * get_gravity(delta)
 	
 	# Apply jump if desired
 	if (Input.is_action_pressed("action_jump") if jump_when_held else Input.is_action_just_pressed("action_jump")) \
 			and can_jump:
-		velocity.y = get_jump()
+		vel.y = get_jump()
 	
 	# Return the new velocity
-	return velocity
+	return vel
 
 ## Count of frames since last grounded
 var frame_timer = bhop_frames

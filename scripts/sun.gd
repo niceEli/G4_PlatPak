@@ -1,6 +1,6 @@
 extends DirectionalLight3D
 
-func _process(delta):
+func _process(_delta):
 	update_sun_position()
 
 func update_sun_position():
