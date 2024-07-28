@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://1wjynvlvhbep"]
+[gd_scene load_steps=6 format=3 uid="uid://1wjynvlvhbep"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7q65x"]
 [ext_resource type="Script" path="res://scripts/HoldSys.gd" id="2_dau3m"]
 [ext_resource type="PackedScene" uid="uid://bw76tqq3fg8em" path="res://scenes/player_ui.tscn" id="3_b5uot"]
+[ext_resource type="Script" path="res://scripts/flashlight.gd" id="4_qqjud"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i8820"]
 radius = 0.55
@@ -31,6 +32,18 @@ hit_from_inside = true
 debug_shape_thickness = 5
 
 [node name="PlayerUi" parent="Eyes/HoldSys" instance=ExtResource("3_b5uot")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Eyes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0176797, -0.422239)
+visible = false
+light_color = Color(1, 1, 0.929412, 1)
+light_energy = 0.03
+light_volumetric_fog_energy = 2.0
+shadow_enabled = true
+distance_fade_enabled = true
+spot_range = 14.003
+spot_angle = 40.55
+script = ExtResource("4_qqjud")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -230,17 +230,6 @@ camera_attributes = ExtResource("9_3qb0x")
 
 [node name="Player" parent="." instance=ExtResource("2_cbjw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02373, 0, 3.01078)
-default_sensitivity = 25.0
-walk_speed = 0.1
-ground_accelerate = 250.0
-air_accelerate = 85.0
-max_ground_velocity = 10.0
-max_air_velocity = 1.5
-jump_force = 0.6
-jump_when_held = true
-friction = 6.0
-bhop_frames = 2
-additive_bhop = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 deterministic = true
