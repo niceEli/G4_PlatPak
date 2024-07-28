@@ -60,6 +60,12 @@ func _input(event):
 		camera_3d.rotate_x(-deg_to_rad(event.relative.y) * default_sensitivity / 100)
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
+func update_controller_camera():
+	var cam_axis_x = Input.get_axis("turn_left", "turn_right")
+	var cam_axis_y = Input.get_axis("turn_down", "turn_up")
+	rotate_y(-deg_to_rad(cam_axis_x) * default_sensitivity / 10)
+	camera_3d.rotate_x(-deg_to_rad(cam_axis_y) * default_sensitivity / 10)
+	camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 ######
 # All this code was only possible thanks to the technical writeup by Flafla2 available below.
@@ -122,6 +128,7 @@ func update_frame_timer():
 
 ## Get frame velocity and update character body
 func handle_movement(delta):
+	update_controller_camera()
 	# Update the bhop frame timer
 	update_frame_timer() 
 	velocity = get_next_velocity(velocity, delta)

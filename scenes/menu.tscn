@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://coh2buj0gmb04"]
+[gd_scene load_steps=32 format=3 uid="uid://coh2buj0gmb04"]
 
 [ext_resource type="Texture2D" uid="uid://dwixm12u67jbj" path="res://addons/godot-prototype-texture/Vector/checker_cyan_512x512.svg" id="1_13j4x"]
 [ext_resource type="PackedScene" uid="uid://1wjynvlvhbep" path="res://scenes/player.tscn" id="2_cbjw4"]
@@ -15,9 +15,8 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ry2wj"]
 albedo_texture = ExtResource("1_13j4x")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ya6af"]
-size = Vector3(18.449, 1, 18.449)
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_84pr8"]
 
@@ -103,12 +102,8 @@ size = Vector3(2.424, 0.309, 2.424)
 [node name="CSGBox3D2" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.48763, 0)
 material_override = SubResource("StandardMaterial3D_ry2wj")
-size = Vector3(18.449, 1, 18.449)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Level/CSGBox3D2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/CSGBox3D2/StaticBody3D"]
-shape = SubResource("BoxShape3D_ya6af")
+use_collision = true
+size = Vector3(128, 1, 128)
 
 [node name="RigidBody3D3" type="RigidBody3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.25068, 0.554739, -1.21429)
@@ -235,6 +230,17 @@ camera_attributes = ExtResource("9_3qb0x")
 
 [node name="Player" parent="." instance=ExtResource("2_cbjw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02373, 0, 3.01078)
+default_sensitivity = 25.0
+walk_speed = 0.1
+ground_accelerate = 250.0
+air_accelerate = 85.0
+max_ground_velocity = 10.0
+max_air_velocity = 1.5
+jump_force = 0.6
+jump_when_held = true
+friction = 6.0
+bhop_frames = 2
+additive_bhop = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 deterministic = true
