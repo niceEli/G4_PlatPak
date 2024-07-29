@@ -1,9 +1,10 @@
 extends DirectionalLight3D
 
-func _process(_delta):
-	update_sun_position()
 
-func update_sun_position():
+func _process(delta):
+	update_sun_position(delta)
+
+func update_sun_position(delta):
 	var datetime = Time.get_datetime_dict_from_system()
 	var hours = datetime["hour"]
 	var minutes = datetime["minute"]
@@ -13,6 +14,6 @@ func update_sun_position():
 	
 	# Example: Adjust the rotation of the sun based on the seconds of the day
 	var max_rotation = 2 * PI  # Full rotation in radians (360 degrees)
-	var rotation_angle = max_rotation * (seconds_of_day / 86400)  # Normalize to [0, 1] range
+	var rotation_angle = max_rotation * (seconds_of_day / 86400.0)  # Normalize to [0, 1] range
 	
-	rotation = Vector3(rotation_angle, 1, 0)  # If you prefer to keep it in radians
+	rotation = Vector3(rotation_angle, 1, 0)

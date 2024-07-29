@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw76tqq3fg8em"]
+[gd_scene load_steps=5 format=3 uid="uid://bw76tqq3fg8em"]
+
+[ext_resource type="Script" path="res://scripts/PlayerStats.gd" id="1_gulmb"]
 
 [sub_resource type="Gradient" id="Gradient_mgamk"]
 interpolation_mode = 1
@@ -12,6 +14,10 @@ height = 3
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="LabelSettings" id="LabelSettings_i2wmb"]
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
 [node name="PlayerUi" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -19,7 +25,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -35,3 +40,17 @@ offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_wg5wf")
+
+[node name="PlayerStats" type="Label" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 85.0
+offset_bottom = 105.0
+text = "FPS:     NULL
+X:          NULL
+Y:          NULL
+Z:          NULL
+SPEED: NULL"
+label_settings = SubResource("LabelSettings_i2wmb")
+script = ExtResource("1_gulmb")
