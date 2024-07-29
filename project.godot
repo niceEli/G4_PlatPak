@@ -93,6 +93,11 @@ action_flashlight={
 ]
 }
 
+[internationalization]
+
+locale/translation_remaps={}
+locale/translations=PackedStringArray("res://res/translations.tres")
+
 [layer_names]
 
 3d_physics/layer_1="Everything"

@@ -1,0 +1,5 @@
+[gd_resource type="CameraAttributesPhysical" format=3 uid="uid://b7y5ben48bmuh"]
+
+[resource]
+auto_exposure_enabled = true
+auto_exposure_speed = 2.52

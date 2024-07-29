@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhoihtf38j3st"]
 
-[ext_resource type="Environment" uid="uid://rih3i7f4ymxu" path="res://env/world_env.res" id="1_o0y4j"]
-[ext_resource type="CameraAttributesPhysical" uid="uid://3xi36vtfagwx" path="res://env/cam_attrib.res" id="2_ydpak"]
+[ext_resource type="Environment" uid="uid://b8u4yct7uuer2" path="res://env/world_env.tres" id="1_adlla"]
+[ext_resource type="CameraAttributesPhysical" uid="uid://b7y5ben48bmuh" path="res://env/cam_attrib.tres" id="2_owmo8"]
 
 [node name="WorldEnvironment" type="WorldEnvironment"]
-environment = ExtResource("1_o0y4j")
-camera_attributes = ExtResource("2_ydpak")
+environment = ExtResource("1_adlla")
+camera_attributes = ExtResource("2_owmo8")

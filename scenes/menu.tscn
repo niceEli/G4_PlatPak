@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://coh2buj0gmb04"]
+[gd_scene load_steps=31 format=3 uid="uid://coh2buj0gmb04"]
 
 [ext_resource type="Texture2D" uid="uid://dwixm12u67jbj" path="res://addons/godot-prototype-texture/Vector/checker_cyan_512x512.svg" id="1_13j4x"]
 [ext_resource type="PackedScene" uid="uid://1wjynvlvhbep" path="res://scenes/player.tscn" id="2_cbjw4"]
@@ -10,8 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://d25bvqgowqffc" path="res://addons/godot-prototype-texture/Vector/checker_yellow_512x512.svg" id="6_d7tay"]
 [ext_resource type="Texture2D" uid="uid://ddf4r834mm3il" path="res://addons/godot-prototype-texture/Vector/checker_red_512x512.svg" id="7_3t4pq"]
 [ext_resource type="Script" path="res://scripts/sun.gd" id="7_n131w"]
-[ext_resource type="Environment" uid="uid://rih3i7f4ymxu" path="res://env/world_env.res" id="8_gayph"]
-[ext_resource type="CameraAttributesPhysical" uid="uid://3xi36vtfagwx" path="res://env/cam_attrib.res" id="9_3qb0x"]
+[ext_resource type="PackedScene" uid="uid://bhoihtf38j3st" path="res://scenes/utils/world_environment.tscn" id="10_sokwp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ry2wj"]
 albedo_texture = ExtResource("1_13j4x")
@@ -224,12 +223,10 @@ shadow_enabled = true
 shadow_blur = 1.606
 script = ExtResource("7_n131w")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("8_gayph")
-camera_attributes = ExtResource("9_3qb0x")
-
 [node name="Player" parent="." instance=ExtResource("2_cbjw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02373, 0, 3.01078)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("10_sokwp")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 deterministic = true
