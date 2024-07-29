@@ -53,6 +53,6 @@ text = "FPS:      NULL
 X:            NULL
 Y:            NULL
 Z:            NULL
-SPEED: NULL"
+SPEED: NULL M/S"
 label_settings = SubResource("LabelSettings_i2wmb")
 script = ExtResource("1_gulmb")
