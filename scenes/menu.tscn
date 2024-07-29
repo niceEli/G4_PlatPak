@@ -1,16 +1,17 @@
-[gd_scene load_steps=31 format=3 uid="uid://coh2buj0gmb04"]
+[gd_scene load_steps=28 format=3 uid="uid://coh2buj0gmb04"]
 
 [ext_resource type="Texture2D" uid="uid://dwixm12u67jbj" path="res://addons/godot-prototype-texture/Vector/checker_cyan_512x512.svg" id="1_13j4x"]
-[ext_resource type="PackedScene" uid="uid://1wjynvlvhbep" path="res://scenes/player.tscn" id="2_cbjw4"]
 [ext_resource type="Texture2D" uid="uid://dhdni050f73m6" path="res://addons/godot-prototype-texture/Vector/checker_black_512x512.svg" id="2_kt4s7"]
 [ext_resource type="Texture2D" uid="uid://easfo7yhrnxp" path="res://addons/godot-prototype-texture/Vector/checker_blue_512x512.svg" id="3_cl20p"]
 [ext_resource type="Texture2D" uid="uid://dmm3ww5wg18q8" path="res://addons/godot-prototype-texture/Vector/checker_pink_512x512.svg" id="4_h0wgb"]
 [ext_resource type="Texture2D" uid="uid://xi4drdg6137" path="res://addons/godot-prototype-texture/Vector/checker_orange_512x512.svg" id="4_rgfds"]
 [ext_resource type="Texture2D" uid="uid://b6e8o3m4vt4h" path="res://addons/godot-prototype-texture/Vector/checker_white_512x512.svg" id="5_8131b"]
 [ext_resource type="Texture2D" uid="uid://d25bvqgowqffc" path="res://addons/godot-prototype-texture/Vector/checker_yellow_512x512.svg" id="6_d7tay"]
-[ext_resource type="Texture2D" uid="uid://ddf4r834mm3il" path="res://addons/godot-prototype-texture/Vector/checker_red_512x512.svg" id="7_3t4pq"]
 [ext_resource type="Script" path="res://scripts/sun.gd" id="7_n131w"]
+[ext_resource type="FontFile" uid="uid://b3xmqkeg561cm" path="res://assets/src/Calamity Regular.otf" id="10_qgor6"]
 [ext_resource type="PackedScene" uid="uid://bhoihtf38j3st" path="res://scenes/utils/world_environment.tscn" id="10_sokwp"]
+[ext_resource type="Script" path="res://scripts/GoToLevelOnPress.gd" id="11_j05ev"]
+[ext_resource type="PackedScene" uid="uid://bx3vme68n660f" path="res://scenes/test_level.tscn" id="12_nasbx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ry2wj"]
 albedo_texture = ExtResource("1_13j4x")
@@ -45,8 +46,6 @@ albedo_texture = ExtResource("4_h0wgb")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8xqg3"]
 albedo_texture = ExtResource("4_rgfds")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jea7s"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_lndka"]
 size = Vector3(1, 0.0750733, 1)
 
@@ -61,38 +60,17 @@ bounce = 0.77
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xeue"]
 albedo_texture = ExtResource("6_d7tay")
 
-[sub_resource type="Animation" id="Animation_pwfxx"]
-resource_name = "plat_move"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "position_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/CSGBox3D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, -7.68059, 0, 7.9495, 1, 1, 7.74031, 0, 7.9495, 2, 1, 7.86678, 0, -7.64397, 3, 1, -7.71594, 0, -7.45083)
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/CSGBox3D/AnimatableBody3D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array()
+[sub_resource type="LabelSettings" id="LabelSettings_aufs4"]
+font = ExtResource("10_qgor6")
+font_size = 47
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r7f2s"]
-_data = {
-"plat_move": SubResource("Animation_pwfxx")
-}
+[sub_resource type="GDScript" id="GDScript_vnlfv"]
+resource_name = "QuitButton"
+script/source = "extends Button
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7xwc"]
-albedo_texture = ExtResource("7_3t4pq")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n6nul"]
-albedo_color = Color(0.270588, 0.415686, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7e8vi"]
-size = Vector3(2.424, 0.309, 2.424)
+func _on_pressed():
+	get_tree().quit()
+"
 
 [node name="Menu" type="Node3D"]
 
@@ -150,14 +128,6 @@ shape = SubResource("BoxShape3D_84pr8")
 [node name="CSGBox3D" type="CSGBox3D" parent="Level/RigidBody3D4"]
 material_override = SubResource("StandardMaterial3D_8xqg3")
 material = SubResource("StandardMaterial3D_vppk0")
-
-[node name="RigidBody3D5" type="RigidBody3D" parent="Level"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.98967, 0.622891, 1.9967)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/RigidBody3D5"]
-shape = SubResource("CapsuleShape3D_jea7s")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Level/RigidBody3D5"]
 
 [node name="Box" type="Node" parent="Level"]
 
@@ -223,25 +193,57 @@ shadow_enabled = true
 shadow_blur = 1.606
 script = ExtResource("7_n131w")
 
-[node name="Player" parent="." instance=ExtResource("2_cbjw4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02373, 0, 3.01078)
-
 [node name="WorldEnvironment" parent="." instance=ExtResource("10_sokwp")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-deterministic = true
-libraries = {
-"": SubResource("AnimationLibrary_r7f2s")
-}
-autoplay = "plat_move"
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.866025, 0.12941, 0.482963, 0, 0.965926, -0.258819, -0.5, -0.224144, -0.836516, 8, -0.820849, -12)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="AnimationPlayer"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.68059, 0, 7.9495)
-material_override = SubResource("StandardMaterial3D_w7xwc")
-size = Vector3(2.424, 0.309, 2.424)
-material = SubResource("StandardMaterial3D_n6nul")
+[node name="UI" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="AnimationPlayer/CSGBox3D"]
+[node name="Title" type="Label" parent="Camera3D/UI"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 17.0
+offset_right = 534.0
+offset_bottom = 78.0
+text = "TEMPORARY NAME"
+label_settings = SubResource("LabelSettings_aufs4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimationPlayer/CSGBox3D/AnimatableBody3D"]
-shape = SubResource("BoxShape3D_7e8vi")
+[node name="Buttons" type="Node" parent="Camera3D/UI"]
+
+[node name="PlayButton" type="Button" parent="Camera3D/UI/Buttons"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -147.0
+offset_right = 219.0
+offset_bottom = -79.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("10_qgor6")
+theme_override_font_sizes/font_size = 39
+text = "Play"
+script = ExtResource("11_j05ev")
+new_scene = ExtResource("12_nasbx")
+
+[node name="QuitButton" type="Button" parent="Camera3D/UI/Buttons"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -68.0
+offset_right = 219.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("10_qgor6")
+theme_override_font_sizes/font_size = 39
+text = "Quit"
+script = SubResource("GDScript_vnlfv")
+
+[connection signal="pressed" from="Camera3D/UI/Buttons/PlayButton" to="Camera3D/UI/Buttons/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="Camera3D/UI/Buttons/QuitButton" to="Camera3D/UI/Buttons/QuitButton" method="_on_pressed"]

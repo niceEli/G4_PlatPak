@@ -15,10 +15,18 @@ run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+CyclopsAutoload="*res://addons/cyclops_level_builder/cyclops_global_scene.tscn"
+
 [display]
 
 window/size/mode=3
 window/size/borderless=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/cyclops_level_builder/plugin.cfg")
 
 [input]
 
@@ -96,7 +104,6 @@ action_flashlight={
 [internationalization]
 
 locale/translation_remaps={}
-locale/translations=PackedStringArray("res://res/translations.tres")
 
 [layer_names]
 

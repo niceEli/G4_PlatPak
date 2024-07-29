@@ -4,7 +4,7 @@ extends DirectionalLight3D
 func _process(delta):
 	update_sun_position(delta)
 
-func update_sun_position(delta):
+func update_sun_position(_delta):
 	var datetime = Time.get_datetime_dict_from_system()
 	var hours = datetime["hour"]
 	var minutes = datetime["minute"]
