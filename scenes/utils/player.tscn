@@ -9,6 +9,7 @@
 radius = 0.55
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_h26xi")
 
 [node name="Ears" type="AudioListener3D" parent="."]

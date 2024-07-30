@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw76tqq3fg8em"]
+[gd_scene load_steps=8 format=3 uid="uid://bw76tqq3fg8em"]
 
 [ext_resource type="Script" path="res://scripts/PlayerStats.gd" id="1_gulmb"]
 [ext_resource type="FontFile" uid="uid://b3xmqkeg561cm" path="res://assets/src/Calamity Regular.otf" id="1_l440q"]
+[ext_resource type="Script" path="res://scripts/console.gd" id="3_im3ca"]
 
 [sub_resource type="Gradient" id="Gradient_mgamk"]
 interpolation_mode = 1
@@ -18,6 +19,11 @@ fill_from = Vector2(0.5, 0.5)
 [sub_resource type="LabelSettings" id="LabelSettings_i2wmb"]
 font = ExtResource("1_l440q")
 outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i60u1"]
+font_size = 10
+outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
 [node name="PlayerUi" type="Control"]
@@ -56,3 +62,21 @@ Z:            NULL
 SPEED: NULL M/S"
 label_settings = SubResource("LabelSettings_i2wmb")
 script = ExtResource("1_gulmb")
+
+[node name="Label" type="Label" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+grow_horizontal = 0
+text = "NullTime: Null Error
+"
+label_settings = SubResource("LabelSettings_i60u1")
+horizontal_alignment = 2
+justification_flags = 128
+clip_text = true
+text_overrun_behavior = 1
+script = ExtResource("3_im3ca")

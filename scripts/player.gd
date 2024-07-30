@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var camera_3d = $Eyes
 
 @export_category("Mouse / Camera Options")
-@export_range(1,200) var default_sensitivity : float = 25
+@export_range(1,200) var default_sensitivity : float = 15
 
 @export_category("Movement Variables")
 ## Speed of walking as a fraction of running
@@ -57,8 +57,7 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(-deg_to_rad(event.relative.x) * default_sensitivity / 100)
-		camera_3d.rotate_x(-deg_to_rad(event.relative.y) * default_sensitivity / 100)
-		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+		camera_3d.rotation.x = clampf(camera_3d.rotation.x + (-deg_to_rad(event.relative.y) * default_sensitivity / 100), deg_to_rad(-90), deg_to_rad(90))
 
 func update_controller_camera():
 	var cam_axis_x = Input.get_axis("turn_left", "turn_right")
