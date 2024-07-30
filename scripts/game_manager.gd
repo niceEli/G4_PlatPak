@@ -4,7 +4,10 @@ class_name game_manager
 ### Init Start
 
 func _ready():
-	get_tree().connect("tree_changed", reset_signals)
+	get_tree().connect("tree_changed", reset_common_data)
+
+func reset_common_data():
+	signals.clear()
 
 ### Init end
 
@@ -27,7 +30,6 @@ enum risk_type{
 
 func print(val: String, risk: risk_type = risk_type.info):
 	var time = Time.get_ticks_msec()
-	print(val)
 	var logval = log_message.new()
 	logval.time = Time.get_ticks_msec()
 	logval.value = val
@@ -38,6 +40,7 @@ func print(val: String, risk: risk_type = risk_type.info):
 	if consolelog.size() > 100:
 		consolelog.pop_back()
 	consolelog.push_front(logval)
+	print("({risk}) {time}: {val}".format({"time": logval.time, "val": logval.value, "risk": logval.risk}))
 
 ### Console End
 
@@ -45,9 +48,6 @@ func print(val: String, risk: risk_type = risk_type.info):
 
 @export var signals: Dictionary = {}
 @export var saved_signals: Dictionary = {}
-
-func reset_signals():
-	signals.clear()
 
 func _set_signal(key: String, value: bool, saved: bool = false, inverse: bool = false) -> void:
 	var val: bool = value
