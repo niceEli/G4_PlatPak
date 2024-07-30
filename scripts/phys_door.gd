@@ -11,18 +11,7 @@ func _process(_delta):
 		GameManager.print("signalName is empty", GameManager.risk_type.error)
 		return
 
-	var do_collide: bool = true
-	var sig: Dictionary = {}
-
-	if saved_signals:
-		sig = GameManager.saved_signals
-	else:
-		sig = GameManager.signals
-
-	if sig.has(signalName):
-		do_collide = sig[signalName]
-		if inverse:
-			do_collide = !do_collide
+	var do_collide: bool = GameManager._get_signal(signalName, saved_signals, inverse)
 
 	door_collision.visible = do_collide
 	door_collision.use_collision = do_collide 

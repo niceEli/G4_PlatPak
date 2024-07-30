@@ -6,34 +6,10 @@ extends Node3D
 @export var saved_signals: bool = false
 @export var inverse: bool = false
 
-func _ready():
-	if signal_name == "":
-		GameManager.print("signalName is empty", GameManager.risk_type.error)
-		return
-	if inverse:
-		if saved_signals:
-			GameManager.saved_signals[signal_name] = true
-			return
-		GameManager.signals[signal_name] = true
-		return
-	if saved_signals:
-		GameManager.saved_signals[signal_name] = false
-		return
-	GameManager.signals[signal_name] = false
-
 func _physics_process(_delta):
 	var amount_of_bodies = len(button_use.get_overlapping_bodies())
 	var is_colliding = bool(amount_of_bodies)
 	if signal_name == "":
 		GameManager.print("signalName is empty", GameManager.risk_type.error)
 		return
-	if inverse:
-		if saved_signals:
-			GameManager.saved_signals[signal_name] = !is_colliding
-			return
-		GameManager.signals[signal_name] = !is_colliding
-		return
-	if saved_signals:
-		GameManager.saved_signals[signal_name] = is_colliding
-		return
-	GameManager.signals[signal_name] = is_colliding
+	GameManager._set_signal(signal_name, is_colliding, saved_signals, inverse)
