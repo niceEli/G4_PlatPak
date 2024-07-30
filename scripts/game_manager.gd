@@ -37,5 +37,13 @@ func print(val: String, risk: risk_type = risk_type.info):
 ### Signals Start
 
 @export var signals: Dictionary = {}
+@export var saved_signals: Dictionary = {}
+
+func reset_signals():
+	signals.clear()
+
+# reset signals when scene is changed (this is a autoload)
+func _ready():
+	get_tree().connect("tree_changed", reset_signals)
 
 ### Signals End
