@@ -131,6 +131,8 @@ func handle_movement(delta):
 	# Update the bhop frame timer
 	update_frame_timer() 
 	velocity = get_next_velocity(velocity, delta)
+	if velocity.length() >= 1000:
+		GameManager.print("you are going very fast, speed: " + str(roundf(velocity.length() * 10) / 10), GameManager.risk_type.warn)
 	move_and_slide()
 
 func _physics_process(delta):

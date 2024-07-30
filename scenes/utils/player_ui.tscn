@@ -76,7 +76,8 @@ text = "NullTime: Null Error
 "
 label_settings = SubResource("LabelSettings_i60u1")
 horizontal_alignment = 2
-justification_flags = 128
+autowrap_mode = 3
 clip_text = true
 text_overrun_behavior = 1
+max_lines_visible = 100
 script = ExtResource("3_im3ca")

@@ -28,6 +28,8 @@ func print(val: String, risk: risk_type = risk_type.info):
 		logval.risk = risk_type.find_key(risk)
 	else:
 		logval.risk = "unkownRISCType"
+	if consolelog.size() > 100:
+		consolelog.pop_back()
 	consolelog.push_front(logval)
 
 ### Console End
