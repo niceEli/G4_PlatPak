@@ -463,9 +463,9 @@ mesh_vector_data = SubResource("Resource_gjnn3")
 
 [node name="PhysButton" parent="." instance=ExtResource("15_7ntne")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79024, -11.0082, 9.23019)
-signalName = "gModLol"
-inverse = true
+signal_name = "gModLol"
 
 [node name="PhysDoor" parent="." instance=ExtResource("16_eix72")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -11, 10)
 signalName = "gModLol"
+inverse = true

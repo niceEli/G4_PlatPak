@@ -19,7 +19,7 @@ func _process(_delta):
 	else:
 		sig = GameManager.signals
 
-	if GameManager.signals.has(signalName):
+	if sig.has(signalName):
 		do_collide = sig[signalName]
 		if inverse:
 			do_collide = !do_collide
