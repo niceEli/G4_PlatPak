@@ -1,6 +1,8 @@
 extends Node
 class_name game_manager
 
+### Console Start
+
 class log_message:
 	var time: float
 	var value: String
@@ -16,7 +18,7 @@ enum risk_type{
 
 @onready var consolelog: Array[log_message]
 
-func print(val: String, risk: risk_type = 0):
+func print(val: String, risk: risk_type = risk_type.info):
 	var time = Time.get_ticks_msec()
 	print(val)
 	var logval = log_message.new()
@@ -27,4 +29,5 @@ func print(val: String, risk: risk_type = 0):
 	else:
 		logval.risk = "unkownRISCType"
 	consolelog.push_front(logval)
-	
+
+### Console End
