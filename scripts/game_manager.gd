@@ -33,3 +33,9 @@ func print(val: String, risk: risk_type = risk_type.info):
 	consolelog.push_front(logval)
 
 ### Console End
+
+### Signals Start
+
+@export var signals: Dictionary = {}
+
+### Signals End

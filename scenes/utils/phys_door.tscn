@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmnkeyjmn1jw4"]
+
+[ext_resource type="Script" path="res://scripts/phys_door.gd" id="1_4tsym"]
+[ext_resource type="Texture2D" uid="uid://c4j3g66nlr4dq" path="res://addons/godot-prototype-texture/PNG/logo_orange_512x512.png" id="1_p2so1"]
+[ext_resource type="Texture2D" uid="uid://bqe67wh8hq74y" path="res://addons/godot-prototype-texture/PNG/grid_lime_512x512.png" id="2_ekfyu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u1op5"]
+albedo_texture = ExtResource("1_p2so1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5im4"]
+albedo_texture = ExtResource("2_ekfyu")
+
+[node name="PhysDoor" type="Node3D"]
+script = ExtResource("1_4tsym")
+
+[node name="DoorCollision" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13593, 0)
+material_override = SubResource("StandardMaterial3D_u1op5")
+use_collision = true
+size = Vector3(1.257, 2.27185, 0.5)
+
+[node name="DoorWalls" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22537, 0)
+material_override = SubResource("StandardMaterial3D_v5im4")
+use_collision = true
+size = Vector3(1.73633, 2.45074, 0.936)
+
+[node name="DoorCollisionSubtract" type="CSGBox3D" parent="DoorWalls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0910339, 0)
+material_override = SubResource("StandardMaterial3D_u1op5")
+operation = 2
+use_collision = true
+size = Vector3(1.257, 2.26868, 1.06079)

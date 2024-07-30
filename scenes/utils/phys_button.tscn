@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr3fb8r1iodw8"]
+
+[ext_resource type="Texture2D" uid="uid://bdjrxkwyxfewa" path="res://addons/godot-prototype-texture/PNG/checker_white_512x512.png" id="1_8pihh"]
+[ext_resource type="Texture2D" uid="uid://cr6nfx3v53wfk" path="res://addons/godot-prototype-texture/PNG/checker_red_512x512.png" id="2_js18m"]
+[ext_resource type="Script" path="res://scripts/ButtonUse.gd" id="3_prfv4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bww7a"]
+albedo_texture = ExtResource("1_8pihh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8hgd"]
+albedo_texture = ExtResource("2_js18m")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b2ng3"]
+height = 0.125739
+radius = 0.844114
+
+[node name="PhysButton" type="Node3D"]
+script = ExtResource("3_prfv4")
+
+[node name="ButtonBase" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+material_override = SubResource("StandardMaterial3D_bww7a")
+use_collision = true
+size = Vector3(2, 0.2, 2)
+
+[node name="ButtonMain" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.238417, 0)
+material_override = SubResource("StandardMaterial3D_j8hgd")
+radius = 0.833913
+height = 0.0966432
+sides = 31
+
+[node name="ButtonUse" type="Area3D" parent="."]
+
+[node name="ButtonCollisions" type="CollisionShape3D" parent="ButtonUse"]
+transform = Transform3D(1.00094, 0, 0, 0, 1.00094, 0, 0, 0, 1.00094, 0, 0.262514, 0)
+shape = SubResource("CylinderShape3D_b2ng3")
+
+[connection signal="body_entered" from="ButtonUse" to="." method="_on_button_use_body_entered"]
+[connection signal="body_exited" from="ButtonUse" to="." method="_on_button_use_body_exited"]

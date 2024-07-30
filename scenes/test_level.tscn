@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bx3vme68n660f"]
+[gd_scene load_steps=56 format=3 uid="uid://bx3vme68n660f"]
 
 [ext_resource type="PackedScene" uid="uid://bhoihtf38j3st" path="res://scenes/utils/world_environment.tscn" id="1_373rr"]
 [ext_resource type="Texture2D" uid="uid://dwixm12u67jbj" path="res://addons/godot-prototype-texture/Vector/checker_cyan_512x512.svg" id="1_falhd"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://addons/cyclops_level_builder/resources/data_vector_float.gd" id="6_6ykvo"]
 [ext_resource type="Texture2D" uid="uid://d25bvqgowqffc" path="res://addons/godot-prototype-texture/Vector/checker_yellow_512x512.svg" id="7_d6nob"]
 [ext_resource type="Script" path="res://addons/cyclops_level_builder/resources/mesh_vector_data.gd" id="7_rpayg"]
+[ext_resource type="PackedScene" uid="uid://cr3fb8r1iodw8" path="res://scenes/utils/phys_button.tscn" id="15_7ntne"]
+[ext_resource type="PackedScene" uid="uid://bmnkeyjmn1jw4" path="res://scenes/utils/phys_door.tscn" id="16_eix72"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akjc7"]
 albedo_texture = ExtResource("1_falhd")
@@ -458,3 +460,12 @@ mesh_vector_data = SubResource("Resource_aytye")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
 script = ExtResource("3_esdgf")
 mesh_vector_data = SubResource("Resource_gjnn3")
+
+[node name="PhysButton" parent="." instance=ExtResource("15_7ntne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.79024, -11.0082, 9.23019)
+signalName = "gModLol"
+inverse = true
+
+[node name="PhysDoor" parent="." instance=ExtResource("16_eix72")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -11, 10)
+signalName = "gModLol"
