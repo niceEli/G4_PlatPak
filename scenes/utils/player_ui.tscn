@@ -63,7 +63,7 @@ SPEED: NULL M/S"
 label_settings = SubResource("LabelSettings_i2wmb")
 script = ExtResource("1_gulmb")
 
-[node name="Label" type="Label" parent="."]
+[node name="Console" type="Label" parent="."]
 clip_contents = true
 layout_mode = 1
 anchors_preset = -1

@@ -1,7 +1,8 @@
 extends Node
+## The manager for the game that handles things like bool-signals and console logging
 class_name game_manager
 
-### Init Start
+# Init Start
 
 func _ready():
 	get_tree().connect("tree_changed", reset_common_data)
@@ -9,9 +10,9 @@ func _ready():
 func reset_common_data():
 	signals.clear()
 
-### Init end
+# Init end
 
-### Console Start
+# Console Start
 
 class log_message:
 	var time: float
@@ -42,9 +43,9 @@ func print(val: String, risk: risk_type = risk_type.info):
 	consolelog.push_front(logval)
 	print("({risk}) {time}: {val}".format({"time": logval.time, "val": logval.value, "risk": logval.risk}))
 
-### Console End
+# Console End
 
-### Signals Start
+# Signals Start
 
 @export var signals: Dictionary = {}
 @export var saved_signals: Dictionary = {}
@@ -93,4 +94,4 @@ func _remove_signal(key: String, saved: bool = false) -> void:
 		if signals.has(key):
 			signals.erase(key)
 
-### Signals End
+# Signals End

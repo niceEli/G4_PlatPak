@@ -1,5 +1,9 @@
 extends CharacterBody3D
 
+class_name Player
+
+## The main player for the game.
+
 @onready var camera_3d = $Eyes
 
 @export_category("Mouse / Camera Options")
