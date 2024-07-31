@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bx3vme68n660f"]
+[gd_scene load_steps=62 format=3 uid="uid://bx3vme68n660f"]
 
 [ext_resource type="PackedScene" uid="uid://bhoihtf38j3st" path="res://scenes/utils/world_environment.tscn" id="1_373rr"]
 [ext_resource type="Texture2D" uid="uid://dwixm12u67jbj" path="res://addons/godot-prototype-texture/Vector/checker_cyan_512x512.svg" id="1_falhd"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://addons/cyclops_level_builder/resources/data_vector_float.gd" id="6_6ykvo"]
 [ext_resource type="Texture2D" uid="uid://d25bvqgowqffc" path="res://addons/godot-prototype-texture/Vector/checker_yellow_512x512.svg" id="7_d6nob"]
 [ext_resource type="Script" path="res://addons/cyclops_level_builder/resources/mesh_vector_data.gd" id="7_rpayg"]
+[ext_resource type="Script" path="res://scripts/AnimatedViaTrigger.gd" id="8_03wgk"]
+[ext_resource type="Texture2D" uid="uid://bp0yytofa3ppg" path="res://addons/godot-prototype-texture/PNG/logo_white_512x512.png" id="8_usx5g"]
 [ext_resource type="PackedScene" uid="uid://cr3fb8r1iodw8" path="res://scenes/utils/phys_button.tscn" id="15_7ntne"]
 [ext_resource type="PackedScene" uid="uid://bmnkeyjmn1jw4" path="res://scenes/utils/phys_door.tscn" id="16_eix72"]
 
@@ -63,6 +65,36 @@ bounce = 0.77
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gonch"]
 albedo_texture = ExtResource("7_d6nob")
+
+[sub_resource type="Animation" id="Animation_6ih0o"]
+resource_name = "test_level"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/CSGBox3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 4.47031, -0.245493, 4.49342, 1, 1, 4.47031, -0.245493, 4.49342, 3, 1, 4.47031, -11.226, 4.49342, 4, 1, 4.47031, -11.226, 4.49342, 6, 1, 4.47031, -0.245493, 4.49342)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/CSGBox3D/AnimatableBody3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array()
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oa2gd"]
+_data = {
+"test_level": SubResource("Animation_6ih0o")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6y7e4"]
+albedo_texture = ExtResource("8_usx5g")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_df6ek"]
+size = Vector3(3, 0.5, 3)
 
 [sub_resource type="Resource" id="Resource_ruk2s"]
 script = ExtResource("4_aeyba")
@@ -441,6 +473,25 @@ material_override = SubResource("StandardMaterial3D_gonch")
 radial_segments = 19
 rings = 19
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Level"]
+deterministic = true
+libraries = {
+"": SubResource("AnimationLibrary_oa2gd")
+}
+autoplay = "test_level"
+script = ExtResource("8_03wgk")
+signal_name = "Platforme"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level/AnimationPlayer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47031, -0.245493, 4.49342)
+material_override = SubResource("StandardMaterial3D_6y7e4")
+size = Vector3(3, 0.5, 3)
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="Level/AnimationPlayer/CSGBox3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/AnimationPlayer/CSGBox3D/AnimatableBody3D"]
+shape = SubResource("BoxShape3D_df6ek")
+
 [node name="Env" type="Node" parent="."]
 
 [node name="WorldEnvironment" parent="Env" instance=ExtResource("1_373rr")]
@@ -469,3 +520,7 @@ signal_name = "gModLol"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -11, 10)
 signalName = "gModLol"
 inverse = true
+
+[node name="PhysButton2" parent="." instance=ExtResource("15_7ntne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.99012, -11.0243, 4.98897)
+signal_name = "Platforme"

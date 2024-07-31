@@ -28,6 +28,8 @@ extends CharacterBody3D
 ## converge to the player's wishdir
 @export var additive_bhop : bool = true
 
+signal too_fast(speed: float)
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 3
 
@@ -132,6 +134,7 @@ func handle_movement(delta):
 	update_frame_timer() 
 	velocity = get_next_velocity(velocity, delta)
 	if velocity.length() >= 1000:
+		too_fast.emit(velocity.length())
 		GameManager.print("you are going very fast, speed: " + str(roundf(velocity.length() * 10) / 10), GameManager.risk_type.warn)
 	move_and_slide()
 
